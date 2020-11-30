@@ -1,5 +1,4 @@
 <?php
-use App\Http\Controllers\BookController;
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
@@ -20,4 +19,15 @@ $router->get('/', function () use ($router) {
 $router->get('id/{id}',function ($id){
     return 'id: '. $id;
 });
-$router ->post('register','UsersController@register');
+
+$router -> group(['middleware' => 'auth'], function() use ($router){
+    $router -> get('/api/user/{id}/details/{param1}', function($id){
+        $user=($id);
+        return $user -> toArray();
+        
+    });
+});
+$router->post('/register', 'UsersController@register');
+
+$router ->get ('/login','UserController@login');
+
