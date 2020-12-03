@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
@@ -35,5 +35,10 @@ class UsersController extends Controller
 
         return response(['data' => $data, 'message' => 'Account created successfully!', 'status' => true]);
     }  
-     
+    public function logout (Request $request) {
+        //logout user
+        Auth::logout();
+        // redirect to homepage
+        return redirect('/');
+    }
 }

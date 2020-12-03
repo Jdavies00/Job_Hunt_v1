@@ -1,6 +1,7 @@
 <?php
 /** @var \Laravel\Lumen\Routing\Router $router */
 
+// use Illuminate\Http\Client\Request;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -20,14 +21,20 @@ $router->get('id/{id}',function ($id){
     return 'id: '. $id;
 });
 
+use Illuminate\Http\Request;
 $router -> group(['middleware' => 'auth'], function() use ($router){
+
     $router -> get('/api/user/{id}/details/{param1}', function($id){
         $user=($id);
-        return $user -> toArray();
-        
+        return $user -> toArray();    
+    });
+    $router -> get('/api/user', function(Request $request){
+        $user = $request-> user();
+        return $user ->toArray();
     });
 });
 $router->post('/register', 'UsersController@register');
 
-$router ->get ('/login','UserController@login');
+$router ->get ('/api/user','UsersController@login');
 
+$router ->get('/logout','UsersController@logout');
