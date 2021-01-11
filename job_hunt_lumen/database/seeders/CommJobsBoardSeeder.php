@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\CommJobsBoard;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class CommJobsBoardSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UserSeeder::class);
-        // $this->call(CommJobsBoardSeeder::class);
+        CommJobsBoard::factory()->count(10)->create();
 
     }
 }

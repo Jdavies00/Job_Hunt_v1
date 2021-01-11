@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\CommJobsBoard;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class MyJobsBoardSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UserSeeder::class);
-        // $this->call(CommJobsBoardSeeder::class);
-
+        //
     }
 }
